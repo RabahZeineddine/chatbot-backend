@@ -7,7 +7,7 @@ export const INTERNAL_SERVER_ERROR = 500
 export default class ErrorHandler {
 
     constructor(error = {}) {
-
+        this.error = error
     }
     
 }
