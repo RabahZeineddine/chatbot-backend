@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import MessagesController from '../../controllers/MessagesController'
 
 const initRouter = () => {
     let router = Router()
@@ -25,12 +26,17 @@ const login = async (req, res) => {
 }
 
 const message = async (req, res) => {
-    // setTimeout(() => {
-    const message = req.body
-    message.user = 'application'
-    res.status(200)
-    res.send([message])
-    // }, 5000)
+    const params = req.body
+    console.log(JSON.stringify(params, null, 2))
+    let messageController = new MessagesController()
+    try {
+        let response = await messageController.send(params)
+        console.log(JSON.stringify(response, null, 2))
+        res.status(200).json(response)
+    } catch (err) {
+        console.log(err)
+        res.status(500).json(err)
+    }
 }
 
 
