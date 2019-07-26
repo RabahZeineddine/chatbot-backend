@@ -4,7 +4,7 @@ import development from './development'
 import quality_assurance from './quality_assurance'
 import production from './production'
 
-const config = {
+const configurations = {
     development: {
         PORT: 4000,
         NODE_ENV,
@@ -22,4 +22,4 @@ const config = {
     }
 }
 
-export default config[NODE_ENV]
+export default configurations[NODE_ENV]

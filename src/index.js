@@ -1,11 +1,11 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import '@babel/polyfill'
-import { env, corsOptions } from './config'
 import cors from 'cors'
 import errorhandler from 'errorhandler'
 import morgan from 'morgan'
 import chalk from 'chalk'
+import { env, corsOptions } from './config'
 import {
     web
 } from './routers'
