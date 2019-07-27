@@ -11,7 +11,7 @@
     "local": "npm run linter && babel-node src/index.js",
     "linter": "eslint src/**",
     "build": "babel src --out-dir dist",
-    "start": "cross-env NODE_ENV=production && npm run load:env && npm run server",
+    "start": "cross-env NODE_ENV=production && npm run server",
     "server": "node dist/index"
   },
   "author": "Rabah Zeineddine",
