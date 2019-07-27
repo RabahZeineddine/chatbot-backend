@@ -16,13 +16,6 @@
   },
   "author": "Rabah Zeineddine",
   "license": "ISC",
-  "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.2.2",
-    "@babel/node": "^7.2.2",
-    "@babel/preset-env": "^7.2.3",
-    "nodemon": "^1.18.9"
-  },
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
     "body-parser": "^1.18.3",
@@ -36,7 +29,12 @@
     "ibm-watson": "^4.2.1",
     "joi": "^14.3.1",
     "morgan": "^1.9.1",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "nodemon": "^1.18.9"
   },
   "engines": {
     "node": ">=6.9",
