@@ -9,31 +9,29 @@ class AssistantController {
     }
 
     async createSession() {
-        console.log('Create session method invoked..')
         try {
-            let { session_id } = await this.assistant.createSession({
-                assistant_id: env.assistant.assistant_id
+            let { result: { session_id } } = await this.assistant.createSession({
+                assistantId: env.assistant.assistantId
             })
-            console.log('Session id: ' + session_id)
             return session_id
         } catch (err) {
-            console.log(err)
+            console.error(err)
             throw new Error(err)
         }
     }
 
     async AssistantOptions(params) {
-        if (!params.session_id || params.session_id == '') {
+        if (!params.sessionId || params.sessionId == '') {
             try {
-                let session_id = await this.createSession()
-                params.session_id = session_id
+                let sessionId = await this.createSession()
+                params.sessionId = sessionId
             } catch (err) {
                 throw new Error(err)
             }
         }
         return {
-            assistant_id: env.assistant.assistant_id,
-            session_id: params.session_id,
+            assistantId: env.assistant.assistantId,
+            sessionId: params.sessionId,
             input: {
                 'message_type': params.message.type,
                 'text': params.message.value || ' ',
@@ -53,18 +51,18 @@ class AssistantController {
         try {
             let messageOptions = await this.AssistantOptions(params)
             try {
-                let response = await this.assistant.message(messageOptions)
-                response.session_id = params.session_id
-                return response
+                let { result } = await this.assistant.message(messageOptions)
+                result.sessionId = params.sessionId
+                return result
             } catch (err) {
                 let error = JSON.parse(err.body)
                 if (error && error.code === 404) {
                     try {
-                        delete params.session_id
+                        delete params.sessionId
                         return await this.sendMessage(params)
 
                     } catch (err) {
-                        console.log(err)
+                        console.error(err)
                         throw new Error(err)
                     }
                 } else

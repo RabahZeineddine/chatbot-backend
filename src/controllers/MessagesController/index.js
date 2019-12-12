@@ -37,13 +37,12 @@ class MessagesController {
     async send(params) {
         let assistantController = new AssistantController()
         try {
-            let result = await assistantController.sendMessage(params)
-            console.log(JSON.stringify(result, null, 2))
+            let result = await assistantController.sendMessage({message: params})
             let messages = await this.parseAssistantOutput(result)
             return {
                 messages,
                 context: result.context,
-                session_id: result.session_id
+                sessionId: result.sessionId
             }
         } catch (err) {
             throw new Error(err)

@@ -27,14 +27,12 @@ const login = async (req, res) => {
 
 const message = async (req, res) => {
     const params = req.body
-    console.log(JSON.stringify(params, null, 2))
     let messageController = new MessagesController()
     try {
         let response = await messageController.send(params)
-        console.log(JSON.stringify(response, null, 2))
         res.status(200).json(response)
     } catch (err) {
-        console.log(err)
+        console.error(err)
         res.status(500).json(err)
     }
 }

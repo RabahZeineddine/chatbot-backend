@@ -4,8 +4,8 @@ config()
 export default ({
     assistant: {
         version: process.env.assistantVersion,
-        iam_apikey: process.env.assistantApikey,
+        apikey: process.env.assistantApikey,
         url: process.env.assistantURL,
-        assistant_id: process.env.assistantID,
+        assistantId: process.env.assistantID,
     }
 })
