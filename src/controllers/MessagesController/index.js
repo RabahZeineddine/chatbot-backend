@@ -37,7 +37,7 @@ class MessagesController {
     async send(params) {
         let assistantController = new AssistantController()
         try {
-            let result = await assistantController.sendMessage({message: params})
+            let result = await assistantController.sendMessage(params)
             let messages = await this.parseAssistantOutput(result)
             return {
                 messages,
